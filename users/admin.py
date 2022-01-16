@@ -7,8 +7,8 @@ from django.utils.translation import gettext_lazy as _
 # Register your models here.
 class UserAdminConfig(UserAdmin):
     ordering = ('lname',)
-    list_display = ('lname', 'fname', 'email', 'is_active', 'staff', 'admin',)
-    list_filter = ('lname', 'fname', 'email', 'staff', 'admin',)
+    list_display = ('id', 'lname', 'fname', 'email', 'department_id', 'is_active', 'staff', 'admin',)
+    list_filter = ('department_id', 'staff', 'admin',)
     search_fields = ('lname', 'fname', 'email',)
     fieldsets = (
         (None, {'fields': ('email',)}),
