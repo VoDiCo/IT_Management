@@ -23,5 +23,5 @@ router.register('device', views.DevicesView, basename='devices')
 #router.register('devices/<int:device-id>', views.DevicesView, basename='devicessingle')
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]

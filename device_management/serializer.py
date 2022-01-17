@@ -8,9 +8,9 @@ class ListDevicesSerializer(serializers.ModelSerializer):
     """
     device_type_name = serializers.CharField(source='device_type.device_type_name')
     manufacturer = serializers.CharField(source='manufacturer.manufacturer_name')
-    device_user_lastname = serializers.CharField(source='device_user.user_lname', allow_null=True)
-    device_user_firstname = serializers.CharField(source='device_user.user_fname', allow_null=True)
-    department = serializers.CharField(source='device_user.user_department.depatment_id', allow_null=True)
+    device_user_lastname = serializers.CharField(source='device_user.lname', allow_null=True)
+    device_user_firstname = serializers.CharField(source='device_user.fname', allow_null=True)
+    department = serializers.CharField(source='device_user.department.department_id', allow_null=True)
 
     class Meta:
         model = models.Devices
