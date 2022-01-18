@@ -31,6 +31,7 @@ class ListDevicesSerializer(serializers.ModelSerializer):
 class DetailDeviceSerializer(serializers.ModelSerializer):
     """
     Serializes a spezific object(instance) from Device
+    Email Adress ist USername
     """
 
     class Meta:

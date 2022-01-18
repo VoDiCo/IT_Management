@@ -8,6 +8,7 @@ class DevicesView(viewsets.ReadOnlyModelViewSet):
     """
     Devices List lists all devices in the Company managed by the IT
     Devices Instance returns an object of the devices list
+    Emailaddress is Username
     """
 
     queryset = models.Devices.objects.all()
