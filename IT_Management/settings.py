@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'device_management',
     'users',
-    'frontend',
+    'frontend.apps.FrontendConfig',
 ]
 
 MIDDLEWARE = [
