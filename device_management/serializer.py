@@ -15,6 +15,7 @@ class ListDevicesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Devices
         fields = ['url',
+                  'device_id',
                   'barcode',
                   'device_type_name',
                   'manufacturer',
