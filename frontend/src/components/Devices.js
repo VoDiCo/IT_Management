@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import {DataGrid} from "@mui/x-data-grid";
+import {DataGrid, GridToolbar} from "@mui/x-data-grid";
 
+
+const urls = 'http://127.0.0.1:8000/api/device/'
 
 const columns = [
-    {field: 'device_id', headerName: 'ID'},
+    {field: 'device_id', headerName: 'ID', hide: true},
     {field: 'barcode', headerName: 'Barcode', maxWidth: 150, renderCell: (params)=><a href={params.value}><img src={params.value} width={100}/></a>},
     {field: 'device_type_name', headerName: 'Gerätetyp'},
     {field: 'manufacturer', headerName: 'Hersteller'}
 ]
 
-export default class HomePage extends Component {
+export default class Devices extends Component {
   constructor(props) {
     super(props);
     }
@@ -22,9 +24,8 @@ export default class HomePage extends Component {
 
 async componentDidMount() {
     try{
-        const response =await fetch('http://127.0.0.1:8000/api/device/');
+        const response =await fetch(urls);
         const data = await response.json();
-        console.log(data, 'also')
         this.setState({data : data, isLoaded : true});
     }catch (err){
         console.log(err)
@@ -34,7 +35,6 @@ async componentDidMount() {
 
   render() {
       const {data, isLoaded} = this.state;
-      console.log(data, 'here we go')
       return (
           <div style={{height: 400, width: '100%'}}>
               {!isLoaded ? <div>Loading . . .</div> :
@@ -42,9 +42,22 @@ async componentDidMount() {
                       getRowId={data => data.device_id}
                       rows={data}
                       columns={columns}
-                      pageSize={5}
-                      rowsPerPageOptions={[5]}
+                      pageSize={10}
+                      rowsPerPageOptions={[10]}
                       checkboxSelection
+                      components={
+                          {Toolbar: GridToolbar}
+                      }
+                      disableColumnMenu
+                      localeText={
+                        {
+                          toolbarDensity: 'Größe',
+                          toolbarDensityLabel: 'Größe',
+                          toolbarDensityCompact: 'Kompakt',
+                          toolbarDensityStandard: 'Standard',
+                          toolbarDensityComfortable: 'Komfortabel',
+                        }
+                      }
                   />
               }
           </div>
